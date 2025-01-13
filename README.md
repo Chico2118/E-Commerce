@@ -60,3 +60,37 @@ In this milestone, we focused on setting up the basic backend configurations nec
 - Database connection using MongoDB and Mongoose.
 - User authentication using JWT.
 - Comprehensive error handling for improved debugging and user experience.
+
+  Milestone 4
+
+This project demonstrates creating a MongoDB schema, integrating file uploads using multer, hashing passwords with bcrypt, parsing request bodies with body-parser, and securing routes with JWT-based authentication.
+
+Features
+
+MongoDB Schema: Define and manage MongoDB collections using Mongoose.
+
+File Uploads: Upload and store files using multer.
+
+Password Hashing: Secure user passwords using bcrypt.
+
+Body Parsing: Parse incoming request bodies using body-parser.
+
+JWT Authentication: Secure project routes and manage authentication tokens.
+
+Technologies Used
+
+Node.js: Backend runtime environment.
+
+Express: Web framework for building APIs.
+
+MongoDB: NoSQL database for data storage.
+
+Mongoose: ODM library for MongoDB.
+
+Multer: Middleware for handling file uploads.
+
+Bcrypt: Library for hashing passwords.
+
+Body-Parser: Middleware for parsing JSON and URL-encoded data.
+
+jsonwebtoken: Library for creating and verifying JWT tokens.
