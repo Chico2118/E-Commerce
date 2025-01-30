@@ -1,9 +1,25 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v2/user/login",
+        { email, password }
+      );
+      console.log(response.data);
+    } catch (error) {
+      setError("Invalid Credentials!");
+      console.error("Login Error", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex  flex-col justify-center py-12 sm:px-6 lg:pg-8  ">
@@ -15,7 +31,7 @@ const Login = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form action="" className="space-y-6 ">
+          <form action="" className="space-y-6 " onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -94,9 +110,9 @@ const Login = () => {
               </div>
               <p className="text-center">
                 Donot have account?{" "}
-                <link to={"/signup"} className="text-blue-600">
+                <Link to={"/signup"} className="text-blue-600">
                   Signup
-                </link>
+                </Link>
               </p>
             </div>
           </form>
