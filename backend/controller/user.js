@@ -14,7 +14,7 @@ const user = require("../model/user");
 router.post(
   "/create-user",
   upload.single("file"),
-  catchasyncErrors(async (req, res) => {
+  catchAsyncErrors(async (req, res) => {
     const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
 
