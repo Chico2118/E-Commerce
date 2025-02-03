@@ -1,63 +1,102 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const User = require("../model/user");
-const Product = require("../model/product");
+const Product = require("../model/product"); //add this line
+const User = require("../model/User");
 const router = express.Router();
-const { upload } = require("../multer");
-// const { default: Product } = require('../../frontend/src/components/Product');
+const { pupload } = require("../multer");
 
 const validateProductData = (data) => {
   const errors = [];
-  console.log("data: ", data);
-  if (!data.name) errors.push("Product Name is required");
-  if (!data.description) errors.push("Product Description is required");
-  if (!data.price || data.price < 0 || isNaN(data.price))
-    errors.push("Product price is required");
-  if (!data.stock || data.stock < 0 || isNaN(data.stock))
-    errors.push("Product stock is required");
-  if (!data.category) errors.push("Product Category is required");
-  if (!data.email) errors.push("Product Email is required");
+
+  if (!data.name) errors.push("Product name is required");
+  if (!data.description) errors.push("Product description is required");
+  if (!data.category) errors.push("Product category is required");
+  if (!data.price || isNaN(data.price) || data.price <= 0)
+    errors.push("Valid product price is required"); //change to data.price
+  if (!data.stock || isNaN(data.stock) || data.stock < 0)
+    errors.push("Valid product stock is required"); // change to data.stock
+  if (!data.email) errors.push("Email is required");
 
   return errors;
 };
-router.post("/product", upload.array("images", 10), async (req, res) => {
-  // const{name, description,category,tags,price,stock,email}=req.bod;
-  const images = req.files.map((file) => file.path);
-  console.log(req.body);
-  console.log(req.files);
-  const validationErrors = validateProductData(req.body);
-  if (validationErrors.length > 0) {
-    return res.status(400).json({ errors: validationErrors });
-  }
-  if (!req.files || req.files.length === 0) {
-    return res.status(400).json({ error: "At least one image is needed" });
-  }
-  try {
+
+router.post(
+  "/create-product",
+  pupload.array("images", 10),
+  async (req, res) => {
+    console.log("Hello");
     const { name, description, category, tags, price, stock, email } = req.body;
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ error: "email doesnot exists" });
-    }
-    const newProduct = new Product({
+    const images = req.files.map((file) => file.path); // Get file paths-this to be added
+
+    const validationErrors = validateProductData({
       name,
       description,
       category,
-      tags,
       price,
       stock,
       email,
-      images,
+      tags,
+    }); //Add tags
+    if (validationErrors.length > 0) {
+      return res.status(400).json({ errors: validationErrors });
+    }
+
+    if (images.length === 0) {
+      return res.status(400).json({ error: "At least one image is required" });
+    }
+
+    try {
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(400)
+          .json({ error: "Email does not exist in the users database" });
+      }
+
+      const newProduct = new Product({
+        name,
+        description,
+        category,
+        tags,
+        price,
+        stock,
+        email,
+        images,
+      });
+
+      await newProduct.save();
+
+      res.status(201).json({
+        message: "Product created successfully",
+        product: newProduct,
+      });
+    } catch (err) {
+      console.error(err);
+      res
+        .status(500)
+        .json({ error: "Server error. Could not create product." });
+    }
+  }
+);
+
+// Route: Get all products
+router.get("/get-products", async (req, res) => {
+  try {
+    const products = await Product.find();
+    const productsWithFullImageUrl = products.map((product) => {
+      if (product.images && product.images.length > 0) {
+        product.images = product.images.map((imagePath) => {
+          // Image URLs are already prefixed with /products
+          return imagePath;
+        });
+      }
+      return product;
     });
-    await newProduct.save();
-    res.status(201).json({
-      message: "product create successfully",
-      product: newProduct,
-    });
+    res.status(200).json({ products: productsWithFullImageUrl });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      error: "Server error, could not create a product for you",
-    });
+    console.error(" Server error:", err);
+    res.status(500).json({ error: "Server error. Could not fetch products." });
   }
 });
+
 module.exports = router;
