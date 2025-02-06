@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Product = require("../model/product"); //add this line
-const User = require("../model/User");
+const User = require("../model/user");
 const router = express.Router();
 const { pupload } = require("../multer");
 
