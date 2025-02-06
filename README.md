@@ -147,3 +147,7 @@ Tech-stack used:
 2) Multer
 3) Routing using express
 
+## Milestone 11: Project Overview -
+
+Created an endpoint for uploading images.
+
