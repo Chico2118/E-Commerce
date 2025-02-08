@@ -192,4 +192,22 @@ router.put(
   }
 );
 
+router.delete("/delete-product/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const existingProduct = await Product.findById(id);
+    if (!existingProduct) {
+      return res
+        .status(400)
+        .json({ error: "Product not availabe so unable to delete" });
+    }
+    await existingProduct.deleteOne();
+    res.status(200).json({ message: "Product Deleted Successfully!" });
+  } catch (err) {
+    console.error(`Server error:${err}`);
+    res.status(500).json({ message: "Server error so product not deleted!" });
+  }
+});
+
 module.exports = router;
