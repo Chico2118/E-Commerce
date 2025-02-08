@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+
 const CreateProduct = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const isEdit = Boolean(id);
   const [images, setImages] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -27,10 +32,29 @@ const CreateProduct = () => {
   };
 
   useEffect(() => {
-    return () => {
-      previewImages.forEach((url) => URL.revokeObjectURL(url));
-    };
-  }, [previewImages]); //To avoid storage issues
+    if (isEdit) {
+      axios
+        .get(`http://localhost:8000/api/v2/product/product/${id}`)
+        .then((response) => {
+          const p = response.data.product;
+          setName(p.name);
+          setDescription(p.description);
+          setCategory(p.category);
+          setTags(p.tags || " ");
+          setPrice(p.price);
+          setStock(p.stock);
+          setEmail(p.email);
+          if (p.images && p.images.length > 0) {
+            setPreviewImages(
+              p.images.map((imgPath) => `http://localhost:8000${imgPath}`)
+            );
+          }
+        })
+        .catch((err) => {
+          console.error(`Error Fetching Product ${err}`);
+        });
+    }
+  }, [id, isEdit]); //To avoid storage issues
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,32 +74,50 @@ const CreateProduct = () => {
     });
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/v2/product/create-product",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+      if (isEdit) {
+        const response = await axios.put(
+          `http://localhost:8000/api/v2/product/update-product/${id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        if (response.status === 200) {
+          alert("Details Updated!");
+          navigate("/my-products", { replace: true });
         }
-      );
+      } else {
+        const response = await axios.post(
+          "http://localhost:8000/api/v2/product/create-product",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
-      if (response.status === 201) {
-        alert("Product created successfully!");
-        setImages([]);
-        setName("");
-        setDescription("");
-        setCategory("");
-        setTags("");
-        setPrice("");
-        setStock("");
-        setEmail("");
+        if (response.status === 201) {
+          alert("Product created successfully!");
+          setImages([]);
+          setName("");
+          setDescription("");
+          setCategory("");
+          setTags("");
+          setPrice("");
+          setStock("");
+          setEmail("");
+        }
       }
     } catch (err) {
       console.error("Error creating product:", err);
       alert("Failed to create product. Please check the data and try again.");
     }
   };
+
+  const buttonLabel = !isEdit ? "Create" : "Update";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
@@ -188,7 +230,7 @@ const CreateProduct = () => {
               className="hidden"
               multiple
               onChange={handleImageChange}
-              required
+              required={!isEdit}
             />
             <label
               htmlFor="upload"
@@ -211,7 +253,7 @@ const CreateProduct = () => {
             type="submit"
             className="w-full mt-6 bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition-colors duration-200"
           >
-            Create
+            {buttonLabel}
           </button>
         </form>
       </div>
