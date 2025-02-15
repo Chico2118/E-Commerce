@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Product = ({ name, images, description, price }) => {
+const Product = ({ _id, name, images, description, price }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!images || images.length === 0) return;
     const interval = setInterval(() => {
@@ -30,6 +33,7 @@ const Product = ({ name, images, description, price }) => {
           ${price.toFixed(2)}
         </p>
         <button className="text-white bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full transition-all">
+          onClick={() => navigate(`/product/${_id}`)}
           More Info
         </button>
       </div>
@@ -38,6 +42,7 @@ const Product = ({ name, images, description, price }) => {
 };
 
 Product.propTypes = {
+  _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired,
   description: PropTypes.string.isRequired,
