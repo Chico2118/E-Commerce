@@ -5,7 +5,9 @@ import {
   Home,
   CreateProduct,
   MyProducts,
-} from "./Routes";
+  Cart,
+  ProductDetails,
+} from "./Routes.jsx";
 
 import "./App.css";
 
@@ -19,8 +21,11 @@ function App() {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/create-product/:id" element={<CreateProduct />} />
         <Route path="/my-products" element={<MyProducts />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </BrowserRouter>
   );
 }
+
 export default App;

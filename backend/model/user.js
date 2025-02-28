@@ -1,84 +1,87 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcrypt");
+// const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
-  name: {
+  name:{
     type: String,
     required: [true, "Please enter your name!"],
   },
-  email: {
+  email:{
     type: String,
     required: [true, "Please enter your email!"],
   },
-  password: {
+  password:{
     type: String,
-    required: [true, "Please enter your password!"],
-    minLength: [4, "Password should be greater then 4 character!"],
+    required: [true, "Please enter your password"],
+    minLength: [4, "Password should be greater than 4 characters"],
     select: false,
   },
-  phoneNumber: {
+  phoneNumber:{
     type: Number,
-    maxLength: [10, "don't exceed more then 10 digit"],
   },
-  addresses: [
+  addresses:[
     {
       country: {
         type: String,
       },
-      city: {
+      city:{
         type: String,
       },
-      address1: {
+      address1:{
         type: String,
       },
-      address2: {
+      address2:{
         type: String,
       },
-      zipCode: {
+      zipCode:{
         type: Number,
       },
-      addressType: {
+      addressType:{
         type: String,
       },
-    },
+    }
   ],
-  role: {
+  role:{
     type: String,
     default: "user",
   },
-  avatar: {
+  avatar:{
     public_id: {
       type: String,
       required: true,
     },
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-  resetPasswordToken: String,
-  resetPasswordTime: Date,
+    url: {
+      type: String,
+      required: true,
+    },
+ },
+ createdAt:{
+  type: Date,
+  default: Date.now(),
+ },
+ resetPasswordToken: String,
+ resetPasswordTime: Date,
 });
 
-// //hash password
 
-// userSchema.pre("save", async function (next) {
-//   if (!this.isModified("password")) {
+// //  Hash password
+// userSchema.pre("save", async function (next){
+//   if(!this.isModified("password")){
 //     next();
 //   }
+
 //   this.password = await bcrypt.hash(this.password, 10);
 // });
 
-// //json webtoken
-
-// userSchema.methods.getJywtToken = function () {
-//   return jwt.sign({ id: this_id }, process.env.JWT_SECRT_KEY, {
+// // jwt token
+// userSchema.methods.getJwtToken = function () {
+//   return jwt.sign({ id: this._id}, process.env.JWT_SECRET_KEY,{
 //     expiresIn: process.env.JWT_EXPIRES,
 //   });
 // };
 
-// //COMPARE PASSWORD
+// // compare password
 // userSchema.methods.comparePassword = async function (enteredPassword) {
 //   return await bcrypt.compare(enteredPassword, this.password);
 // };
