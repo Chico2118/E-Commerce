@@ -38,7 +38,7 @@ const ProductDetails = () => {
 
   const handleIncrement = () => setQuantity((prev) => prev + 1);
   const handleDecrement = () =>
-    setQuantity((prev) => (prev >= 1 ? prev - 1 : 1));
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   const addtocart = async () => {
     try {
