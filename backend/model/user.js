@@ -3,50 +3,50 @@ const mongoose = require("mongoose");
 // const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
-  name:{
+  name: {
     type: String,
     required: [true, "Please enter your name!"],
   },
-  email:{
+  email: {
     type: String,
     required: [true, "Please enter your email!"],
   },
-  password:{
+  password: {
     type: String,
     required: [true, "Please enter your password"],
     minLength: [4, "Password should be greater than 4 characters"],
     select: false,
   },
-  phoneNumber:{
+  phoneNumber: {
     type: Number,
   },
-  addresses:[
+  addresses: [
     {
       country: {
         type: String,
       },
-      city:{
+      city: {
         type: String,
       },
-      address1:{
+      address1: {
         type: String,
       },
-      address2:{
+      address2: {
         type: String,
       },
-      zipCode:{
+      zipCode: {
         type: Number,
       },
-      addressType:{
+      addressType: {
         type: String,
       },
-    }
+    },
   ],
-  role:{
+  role: {
     type: String,
     default: "user",
   },
-  avatar:{
+  avatar: {
     public_id: {
       type: String,
       required: true,
@@ -55,15 +55,30 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
- },
- createdAt:{
-  type: Date,
-  default: Date.now(),
- },
- resetPasswordToken: String,
- resetPasswordTime: Date,
+  },
+  cart: [
+    // ✅ Correctly placed at the root
+    {
+      productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+        min: [1, "Quantity cannot be less than 1"],
+        default: 1,
+      },
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  resetPasswordToken: String,
+  resetPasswordTime: Date,
 });
-
 
 // //  Hash password
 // userSchema.pre("save", async function (next){
