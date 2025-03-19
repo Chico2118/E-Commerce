@@ -1,45 +1,43 @@
 const mongoose = require("mongoose");
 
-const schema = mongoose.Schema;
-
-const productSchema = new schema(
+const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Please provide the product name"],
     },
     description: {
       type: String,
-      required: true,
+      required: [true, "Please provide the product description"],
     },
     category: {
       type: String,
-      required: true,
+      required: [true, "Please provide the product category"],
     },
     tags: {
-      type: [String],
+      type: [String], // Array of tags
       default: [],
     },
     price: {
       type: Number,
-      required: true,
+      required: [true, "Please provide the product price"],
     },
     stock: {
       type: Number,
-      required: true,
+      required: [true, "Please provide the product stock"],
     },
     email: {
       type: String,
-      required: true,
-      match: [/.+@.+\..+/, "needed valid email"],
+      required: [true, "Please provide an email"],
+      match: [/.+@.+\..+/, "Please provide a valid email address"],
     },
     images: {
-      type: [String],
-      required: true,
+      type: [String], // Array of image URLs (base64 or hosted links)
+      required: [true, "Please upload product images"],
     },
     createdAt: {
       type: Date,
-      default: Date.now,
+      default: Date.now, // Automatically set the creation date
     },
     cart: [
       {
@@ -61,4 +59,4 @@ const productSchema = new schema(
   }
 );
 
-module.exports = mongoose.model("Prodcut", productSchema);
+module.exports = mongoose.model("Product", productSchema);
