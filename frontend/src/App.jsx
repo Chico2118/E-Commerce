@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   LoginPage,
@@ -7,11 +8,11 @@ import {
   MyProducts,
   Cart,
   ProductDetails,
-} from "./Routes.jsx";
-
+  Profile,
+} from "./Routes";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -23,9 +24,10 @@ function App() {
         <Route path="/my-products" element={<MyProducts />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
