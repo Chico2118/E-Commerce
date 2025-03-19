@@ -57,7 +57,6 @@ const userSchema = new mongoose.Schema({
     },
   },
   cart: [
-    // ✅ Correctly placed at the root
     {
       productId: {
         type: mongoose.Schema.Types.ObjectId,
