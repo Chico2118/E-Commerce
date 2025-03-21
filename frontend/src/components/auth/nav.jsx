@@ -22,13 +22,16 @@ const NavBar = () => {
             { name: "My Products", path: "/my-products" },
             { name: "Add Products", path: "/create-product" },
             { name: "Cart", path: "/cart" },
+            { name: "Profile", path: "/profile" },
           ].map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
                 `px-4 py-2 rounded-md text-lg transition-all duration-300 ${
-                  isActive ? "bg-white text-blue-600 shadow-md" : "text-gray-200 hover:text-white"
+                  isActive
+                    ? "bg-white text-blue-600 shadow-md"
+                    : "text-gray-200 hover:text-white"
                 }`
               }
             >
@@ -52,13 +55,16 @@ const NavBar = () => {
               { name: "My Products", path: "/my-products" },
               { name: "Add Products", path: "/create-product" },
               { name: "Cart", path: "/cart" },
+              { name: "Profile", path: "/profile" },
             ].map((link) => (
               <li key={link.path}>
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
                     `block px-4 py-2 text-lg rounded-md transition-all duration-300 ${
-                      isActive ? "bg-white text-indigo-700" : "text-gray-200 hover:text-white"
+                      isActive
+                        ? "bg-white text-indigo-700"
+                        : "text-gray-200 hover:text-white"
                     }`
                   }
                   onClick={() => setIsOpen(false)}
