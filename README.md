@@ -1,218 +1,174 @@
-E-COMMERCE 
+# 🛒 E-Commerce Project
 
-# E-commerce Project - Milestone 1
+## Milestone 1: MERN Stack Demonstration
 
-This document outlines the progress made in Milestone 1 of our e-commerce project. This milestone focused on setting up the basic MERN (MongoDB, Express.js, React, Node.js) stack and creating a foundational order page.
+This milestone focused on setting up the basic MERN (MongoDB, Express.js, React, Node.js) stack and creating a foundational order page.
 
-## MERN Stack Demonstration
+### MERN Stack Components:
+- **M - MongoDB:** Used as the database to store application data.
+- **E - Express.js:** Implemented as the API, acting as an intermediary between the client (React) and the server (Node.js).
+- **R - React:** Chosen as the client-side framework for building the user interface.
+- **N - Node.js:** Used as the runtime environment for executing the Express.js server.
 
-This milestone successfully demonstrated the integration of the MERN stack:
-
-*   **M - MongoDB:** Used as the database to store application data.
-*   **E - Express.js:** Implemented as the API, acting as an intermediary between the client (React) and the server (Node.js).
-*   **R - React:** Chosen as the client-side framework for building the user interface of the application.
-*   **N - Node.js:** Used as the runtime environment for executing the Express.js server.
-
-## Key Accomplishments
-
-*   **Order Page:** A basic order page was created, laying the groundwork for future order management features.
-
-## 🔑 Milestone 2: A Simple, Responsive Login Page
-
-### What We Did
-In this milestone, we focused on creating a clean and responsive login page. It's straightforward yet effective, giving users a smooth experience.
-
-### Features
-- **User-Friendly Design:** The login page looks great and works well on any screen size.
-- **Interactive Inputs:** Users can enter their username/email and password easily.
-- **Client-Side Validation:** We added basic validation to make sure inputs are on point.
-
-### Tools We Used
-- **React:** To build the interface.
-- **CSS:** For all the styling magic and responsiveness.
-- **JavaScript (ES6):** To handle interactivity and validation.
+### Key Accomplishments:
+- **Order Page:** A basic order page was created, laying the groundwork for future order management features.
 
 ---
-# Milestone 3: Project Overview
 
-## Overview
-In this milestone, we focused on setting up the basic backend configurations necessary for our project. This involved learning and applying key backend development concepts and tools.
+## Milestone 2: A Simple, Responsive Login Page
 
-## Key Learnings
+### What We Did:
+- Focused on creating a clean and responsive login page for a smooth user experience.
 
-1. **Express.js**
-   - Learned how to set up and use Express.js to create a robust and scalable backend server.
-   - Implemented routes and middleware to manage API requests effectively.
+### Features:
+- **User-Friendly Design:** The login page is fully responsive.
+- **Interactive Inputs:** Users can enter their username/email and password.
+- **Client-Side Validation:** Basic validation ensures correct input formatting.
 
-2. **MongoDB Integration**
-   - Learned how to use MongoDB as our database solution.
-   - Established a seamless connection between MongoDB and our server using the Mongoose library.
-
-3. **Authentication with JSON Web Tokens (JWT)**
-   - Gained an understanding of how to use JSON Web Tokens for secure user authentication.
-   - Implemented token-based authentication for protected routes.
-
-4. **Error Handling**
-   - Mastered techniques to handle errors effectively, ensuring the backend runs smoothly and errors are logged or communicated clearly.
-
-## Features Implemented
-- Basic server setup with Express.js.
-- Database connection using MongoDB and Mongoose.
-- User authentication using JWT.
-- Comprehensive error handling for improved debugging and user experience.
-
-  Milestone 4
-
-This project demonstrates creating a MongoDB schema, integrating file uploads using multer, hashing passwords with bcrypt, parsing request bodies with body-parser, and securing routes with JWT-based authentication.
-
-Features
-
-MongoDB Schema: Define and manage MongoDB collections using Mongoose.
-
-File Uploads: Upload and store files using multer.
-
-Password Hashing: Secure user passwords using bcrypt.
-
-Body Parsing: Parse incoming request bodies using body-parser.
-
-JWT Authentication: Secure project routes and manage authentication tokens.
-
-Technologies Used
-
-Node.js: Backend runtime environment.
-
-Express: Web framework for building APIs.
-
-MongoDB: NoSQL database for data storage.
-
-Mongoose: ODM library for MongoDB.
-
-Multer: Middleware for handling file uploads.
-
-Bcrypt: Library for hashing passwords.
-
-Body-Parser: Middleware for parsing JSON and URL-encoded data.
-
-jsonwebtoken: Library for creating and verifying JWT tokens.
-
-
-
-Milestone 5: Project Overview
-Overview
-In this milestone, we focused on creating a Signup Page for new users visiting the website. This feature plays a crucial role in ensuring a smooth onboarding experience with a visually appealing design and secure input validation.
-
-Key Learnings
-User Interface Development:
-
-Designed and implemented the Signup Page using React.
-Used Tailwind CSS for responsive and modern UI styling.
-Input Validation with Regular Expressions (RegEx):
-
-Applied RegEx to validate user inputs such as email, password, and username fields.
-Ensured that all inputs adhere to predefined criteria, improving user experience and data reliability.
-
-## Milestone 6: Project Overview -
-
-Key Learnings -
-
-- We learned how to encrytp the password and store it in the database (Hashing) , Using the Bcrypt package.
-- We also learned how to store data of new users inside the database.
-
-
-## Milestone 7: Project Overview - 
-
-In this milestone we simply implemented the logic for login and signup , that is if the user already exists in the database then only he/she will be able to login
-
-## Milestone 8: Project Overview - 
-
-In this milestone we have created the home page for our application , which displays the product in the home page , we have created one dummy array which will be replaced dynamically in future. i.e the products data. 
-Tech-stack used:
-1) React
-2) Tailwind css
-
-
-## Milestone 9: Project Overview -
-
-In this milestone i have created a form for admin to upload products to our UI also learned how to handle the inputs using react hook and using useeffect hook learned to handle the sideeffects of the application.
-Teach-stack used:
-1) React
-2) Tailwind Ccss
-
-
-## Milestone 10: Project Overview - 
-
-In this milestone 10 i have created an endpoint for the product form and added a multer function for uploading of images related to products.
-Tech-stack used:
-1) React 
-2) Multer
-3) Routing using express
-
-## Milestone 11: Project Overview -
-
-Created an endpoint for uploading images.
-
-
-## Milestone 12: 
-
-In this milestone, we created an API endpoint to filter data by email from MongoDB and dynamically display it on the home page using the previously created product card.
-
-## Milestone 13:
-
-In this milestone , we have added the editing feature for myproducts and in backend we have created endpoint for the product such that product is fetched based on id.
-
-## Milestone 14:
-
-In this milestone , we have added the delete button for deleting the product from our web page and also created an endpoint using delete method based on id.
-
-## Milestone 15:
-
-In this milestone , we have created navbar and we have imported in the product page and home page.
-
-## Milestone 16:
-
-In this milestone , we have created more info button to see the details of the particular product.
-
-# Milestone 17: Cart Functionality
-
-## Overview
-In this milestone,work on implementing cart functionality. The goal is to store product details in a user's cart and create an endpoint to receive and store these details in the database.
-
-## Steps for Milestone 17 📝
-
-### 1. Edit the User Schema to Store Cart Products
-- Modify the user schema to include a field that will hold product details in the cart.
-
-### 2. Write the Cart Schema to Store Products
-- Create a new schema for the cart that can store product details such as product ID, quantity, and other necessary attributes.
-
-### 3. Write an Endpoint to Receive and Store Product Details in the Cart
-- Create a new endpoint that will receive product details from the frontend and store them in the database, specifically in the cart.
+### Tools Used:
+- **React** for UI development.
+- **CSS** for styling and responsiveness.
+- **JavaScript (ES6)** for interactivity and validation.
 
 ---
 
-# Milestone 18: Cart Functionality - Backend Endpoints
+## Milestone 3: Backend Setup
 
-## Overview
-In this milestone, work on backend functionality for the cart. The goal is to create endpoints that handle requests from the cart page and retrieve product details for a user’s cart.
+### Key Learnings:
+1. **Express.js**: Implemented routes and middleware for API management.
+2. **MongoDB Integration**: Established a seamless connection using Mongoose.
+3. **JWT Authentication**: Implemented secure user authentication.
+4. **Error Handling**: Applied robust error-handling techniques.
 
-## By the End of This Milestone,
-
-- Create an endpoint to receive requests from the cart page.
-- Create a backend endpoint to fetch all the products inside the cart based on the user's email.
-
-## Steps for Milestone 18 📝
-
-### 1. Create a Backend Endpoint for Cart Page
-- Implement an endpoint that will receive requests from the frontend (cart page) and store/update products in the user's cart.
-
-### 2. Write an Endpoint to Get Products Inside Cart for a User
-- Create a new endpoint that will fetch and return all the products inside the cart for a specific user, identified by their email.
+### Features Implemented:
+- Basic Express.js server setup.
+- MongoDB connection using Mongoose.
+- User authentication via JWT.
+- Comprehensive error handling.
 
 ---
 
-# 🛒 Cart Functionality - Milestone 19
+## Milestone 4: Authentication & File Uploads
 
-## 🎯 Learning Goals
-- Build a cart page that displays products inside the cart using the endpoint created in Milestone 18.
-- Implement an option to increase and decrease product quantity using + and - buttons.
-- Develop backend endpoints to handle quantity updates dynamically.
+### Features:
+- **MongoDB Schema:** Defined and managed using Mongoose.
+- **File Uploads:** Integrated using `multer`.
+- **Password Hashing:** Secured using `bcrypt`.
+- **Body Parsing:** Implemented with `body-parser`.
+- **JWT Authentication:** Secured routes and managed authentication tokens.
+
+### Technologies Used:
+- **Node.js**, **Express.js**, **MongoDB**, **Mongoose**
+- **Multer**, **Bcrypt**, **Body-Parser**, **jsonwebtoken**
+
+---
+
+## Milestone 5: Signup Page
+
+### Features:
+- Developed a **Signup Page** with React and **Tailwind CSS**.
+- Applied **RegEx-based input validation** for email, password, and username.
+
+---
+
+## Milestone 6: Password Encryption & User Data Storage
+
+- Learned how to encrypt passwords using **bcrypt**.
+- Implemented storing new user data in MongoDB.
+
+---
+
+## Milestone 7: Login & Signup Logic
+
+- Implemented **user authentication** logic.
+- Ensured users can log in only if they exist in the database.
+
+---
+
+## Milestone 8: Home Page Development
+
+- Created a **Home Page** that displays products (using a static array for now).
+- Tech Stack: **React, Tailwind CSS**
+
+---
+
+## Milestone 9: Admin Product Upload Form
+
+- Developed a **form for admins** to upload products.
+- Used **React hooks** (`useState`, `useEffect`) for input handling and side effects.
+
+---
+
+## Milestone 10: Product Form API Endpoint
+
+- Created an **endpoint for product uploads**.
+- Integrated **Multer** for image uploads.
+- Implemented **Express.js routing**.
+
+---
+
+## Milestone 11: Image Upload Endpoint
+
+- Created a backend endpoint to handle **image uploads**.
+
+---
+
+## Milestone 12: Data Filtering by Email
+
+- Built an API endpoint to **filter products by email**.
+- Displayed filtered data dynamically on the home page.
+
+---
+
+## Milestone 13: Edit Product Feature
+
+- Added **edit functionality** for "My Products."
+- Implemented a backend endpoint to **fetch a product by ID**.
+
+---
+
+## Milestone 14: Delete Product Feature
+
+- Added a **delete button** for products.
+- Created a **DELETE API endpoint** based on the product ID.
+
+---
+
+## Milestone 15: Navbar Implementation
+
+- Created a **global navigation bar**.
+- Integrated it with **Home Page** and **Product Page**.
+
+---
+
+## Milestone 16: Product Details Page
+
+- Implemented a **"More Info" button** to view product details.
+
+---
+
+## Milestone 17: Cart Functionality - Backend
+
+### Steps:
+1. Edited the **User Schema** to store cart products.
+2. Created a **Cart Schema** to store product details.
+3. Developed an **endpoint** to receive and store cart data.
+
+---
+
+## Milestone 18: Cart API Endpoints
+
+### Implemented:
+- **Cart Page Endpoint:** Accepts cart data from the frontend.
+- **Fetch Cart Data Endpoint:** Retrieves products based on the user’s email.
+
+---
+
+## Milestone 19: Cart Page & Quantity Updates
+
+### Features:
+- Developed a **Cart Page** that displays cart products.
+- Implemented **increase/decrease quantity** buttons.
+- Created backend **endpoints to handle quantity updates** dynamically.
+
+---
