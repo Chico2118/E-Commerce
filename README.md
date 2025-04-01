@@ -171,4 +171,12 @@ This milestone focused on setting up the basic MERN (MongoDB, Express.js, React,
 - Implemented **increase/decrease quantity** buttons.
 - Created backend **endpoints to handle quantity updates** dynamically.
 
----
+## 📦 Milestone 20–23: Address & Profile Management
+
+### Profile Page:
+- Show user details  
+
+### Address Management:
+- Add and store multiple addresses  
+- Display and select delivery address  
+
