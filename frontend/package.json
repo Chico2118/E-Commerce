@@ -11,14 +11,20 @@
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^8.8.2",
+    "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.7.9",
+    "cors": "^2.8.5",
     "country-state-city": "^3.2.1",
+    "framer-motion": "^12.9.2",
+    "fs": "^0.0.1-security",
     "lucide-react": "^0.475.0",
+    "process": "^0.11.10",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-lottie": "^1.2.10",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
