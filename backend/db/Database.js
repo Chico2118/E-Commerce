@@ -1,3 +1,9 @@
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+  require('dotenv').config({
+    path: '../config/.env',
+  });
+}
+
 const mongoose = require("mongoose");
 
 const connectDatabase = () => {
