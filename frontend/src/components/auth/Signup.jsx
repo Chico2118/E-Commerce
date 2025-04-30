@@ -9,6 +9,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [number,SetNumber]=useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
   const [errors, setErrors] = useState({}); 
@@ -23,9 +24,9 @@ const Signup = () => {
   };
 
   const validateFields = () => {
-    const nameError = ValidationFormObject.validteName(name);
-    const emailError = ValidationFormObject.validteEmail(email);
-    const passwordError = ValidationFormObject.validtePass(password);
+    const nameError = ValidationFormObject.validateName(name);
+    const emailError = ValidationFormObject.validateEmail(email);
+    const passwordError = ValidationFormObject.validatePassword(password);
 
     const newErrors = {};
     if (nameError !== true) newErrors.name = nameError;
@@ -48,6 +49,7 @@ const Signup = () => {
     newForm.append("name", name);
     newForm.append("email", email);
     newForm.append("password", password);
+    newForm.append("phoneNumber", number);
 
     const config = {
       headers: {
@@ -157,6 +159,25 @@ const Signup = () => {
                 {errors.password && (
                   <p className="text-red-500 text-xs mt-1">{errors.password}</p>
                 )}
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="number"
+                className="block text-sm font-medium text-gray-700"
+              >
+               Phone Number
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  name="phoneNumber"
+                  autoComplete="number"
+                  value={number}
+                  onChange={(e) => SetNumber(e.target.value)}
+                  className={`appearance-none block w-full px-3 py-2 border`}
+                />
               </div>
             </div>
 

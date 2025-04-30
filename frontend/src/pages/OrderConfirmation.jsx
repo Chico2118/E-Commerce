@@ -1,10 +1,10 @@
-// OrderConfirmation.jsx
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../axiosConfig';
 import Nav from "../components/auth/nav";
 import { useLocation, useNavigate } from "react-router-dom";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
+// 1) Import PayPalScriptProvider & PayPalButtons
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 const OrderConfirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const OrderConfirmation = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [orderDetails, setOrderDetails] = useState(null);
-
+  // 2) Track which payment method is selected
   const [paymentMethod, setPaymentMethod] = useState("cod"); // 'cod' or 'paypal'
   useEffect(() => {
     if (!addressId || !email) {
@@ -69,6 +69,7 @@ const OrderConfirmation = () => {
     fetchData();
   }, [addressId, email, navigate]);
 
+  // 3) Single function to place order, can accept PayPal data if payment was online
   const handlePlaceOrder = async (
     paymentType = "cod",
     paypalOrderData = null
@@ -114,6 +115,30 @@ const OrderConfirmation = () => {
   const closePopup = () => {
     navigate("/myorders");
   };
+
+  //4)Error and loading state were not handled in previous ones so include here
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <p className="text-lg">Processing...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full h-screen flex flex-col justify-center items-center">
+        <p className="text-red-500 text-lg mb-4">Error: {error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-purple-100 to-blue-200">
@@ -191,8 +216,7 @@ const OrderConfirmation = () => {
                 <div className="mt-4" style={{ maxWidth: "500px" }}>
                   <PayPalScriptProvider
                     options={{
-                      "client-id":
-                        "AamT29RZXBTta_vJCmveih-GaCvoNPj7ZijnQXhttevMVZ3PlhHKuin9CbagZyG9EnBq0Dzn38FI7luU",
+                      "client-id": "AaKL1vZqsVTYSxBUpCXr0qjgiyErrkNKwdW30Gdz9UZGS64lwJ6dDtVU6Ic6i5hcIv_YVNIjO7FZu5dV",
                     }}
                   >
                     <PayPalButtons

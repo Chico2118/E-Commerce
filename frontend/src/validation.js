@@ -1,5 +1,5 @@
 const ValidationFormObject = {
-    validteName: (name) => {
+    validateName: (name) => {
       const nameRegex = /^[a-zA-Z][a-zA-Z\s'-]{1,49}$/;
       if (name.length < 2) {
         return 'Name cannot be less than 2 letters';
@@ -9,7 +9,7 @@ const ValidationFormObject = {
       }
       return true;
     },
-    validtePass: (password) => {
+    validatePassword: (password) => {
       const passwordRegex = {
         minLength: 8,
         maxLength: 128,
@@ -37,7 +37,7 @@ const ValidationFormObject = {
   
       return true;
     },
-    validteEmail: (email) => {
+    validateEmail: (email) => {
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (email.length > 254) {
         return { isValid: false, error: 'Email is too long' };
